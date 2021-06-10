@@ -191,7 +191,7 @@ jobs:
             cd artifacts/infra
             make init
             make up
-            terraform output endpoint > ../dbendpoint.txt
+            terraform output dbendpoint > ../dbendpoint.txt
       - run:
           name: deploy app
           command: |
