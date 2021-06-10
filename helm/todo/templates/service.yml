@@ -4,8 +4,8 @@ metadata:
   name: "todo"
 spec:
   ports:
-    - port: 443
-      targetPort: 5000
+    - port: 80
+      targetPort: 80
       protocol: TCP
   type: LoadBalancer
   selector:
