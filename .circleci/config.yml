@@ -176,7 +176,7 @@ jobs:
   
   deploy-test:
     docker: 
-      - image: cimg/base:2021.05
+      - image: cimg/base:2020.01
     environment:
       ENV: test
     steps:
@@ -186,7 +186,7 @@ jobs:
       - run:
           name: deploy infra
           command: |
-            cd artificats/infra
+            cd artifacts/infra
             make init
             make up
 
