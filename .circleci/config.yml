@@ -173,6 +173,22 @@ jobs:
           root: ./
           paths:
             - artifacts
+deploy-test:
+  docker:
+    - image: mongo:4.0
+  environment:
+    ENV: test
+  steps:
+    - attach_workspace:
+        at: ./
+    - setup-cd
+    - run:
+        name: deploy infra
+        command: |
+          cd artificats/infra
+          make init
+          make up
+
 
 workflows:
   version: 2
@@ -182,6 +198,9 @@ workflows:
       - integration-test:
           requires: 
             - build
+      - deploy-test:
+          requires:
+              - build
       - package:
           requires:
             - integration-test
