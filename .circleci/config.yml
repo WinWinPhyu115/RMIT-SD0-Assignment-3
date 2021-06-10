@@ -124,6 +124,7 @@ jobs:
             cd src
             npm install
             npm run test-e2e
+
   package:
     machine: true
     environment:
@@ -186,5 +187,6 @@ workflows:
             - integration-test
           filters:
             branches:
+              only: master
   
 
