@@ -84,7 +84,23 @@ jobs:
             npm run test-integration --prefix src/
       - store_test_results:
           path: src/test-output/
-
+  
+  deploy-test: 
+    docker: 
+      - image: mongo:4.0
+    environment: 
+      ENV: test
+    steps: 
+      - attach_workspace:
+          at: ./
+      - steup-cd
+      - run: 
+          name: deploy infra
+          command: |
+            cd aetificates/infra
+            make init
+            make up
+  
   e2e:
     docker:
       - image: qawolf/qawolf:v0.9.2
@@ -124,21 +140,7 @@ jobs:
             cd src
             npm install
             npm run test-e2e
-  deploy-test:
-    docker: 
-      - image: mongo:4.0
-    environment:
-      ENV: test
-    steps: 
-      - attach_workspace:
-          at: ./
-      - setup-cd
-      - run:
-          name: deploy infra
-          command: |
-            cd artificats/infra
-            make init
-            make up
+
 
   package:
     machine: true
