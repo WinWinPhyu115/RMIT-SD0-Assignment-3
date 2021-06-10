@@ -124,6 +124,21 @@ jobs:
             cd src
             npm install
             npm run test-e2e
+  deploy-test:
+    docker: 
+      - image: mongo:4.0
+    environment:
+      ENV: test
+    steps: 
+      - attach_workspace:
+          at: ./
+      - setup-cd
+      - run:
+          name: deploy infra
+          command: |
+            cd artificats/infra
+            make init
+            make up
 
   package:
     machine: true
@@ -173,21 +188,7 @@ jobs:
           root: ./
           paths:
             - artifacts
-deploy-test:
-  docker:
-    - image: mongo:4.0
-  environment:
-    ENV: test
-  steps:
-    - attach_workspace:
-        at: ./
-    - setup-cd
-    - run:
-        name: deploy infra
-        command: |
-          cd artificats/infra
-          make init
-          make up
+
 
 
 workflows:
@@ -198,13 +199,13 @@ workflows:
       - integration-test:
           requires: 
             - build
+      - deploy-test:
+          requires:
+            - build
       - package:
           requires:
             - integration-test
           filters:
             branches:
               only: master
-      - build
-      - deploy-test:
-          requires:
-            - build
+ 
