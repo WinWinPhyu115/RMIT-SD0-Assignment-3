@@ -85,22 +85,6 @@ jobs:
       - store_test_results:
           path: src/test-output/
   
-  deploy-test: 
-    docker: 
-      - image: mongo:4.0
-    environment: 
-      ENV: test
-    steps: 
-      - attach_workspace:
-          at: ./
-      - steup-cd
-      - run: 
-          name: deploy infra
-          command: |
-            cd aetificates/infra
-            make init
-            make up
-  
   e2e:
     docker:
       - image: qawolf/qawolf:v0.9.2
