@@ -198,12 +198,13 @@ workflows:
       - integration-test:
           requires: 
             - build
-      - deploy-test:
-          requires:
-              - build
       - package:
           requires:
             - integration-test
           filters:
             branches:
               only: master
+      - build
+      - deploy-test:
+          requires:
+            - build
