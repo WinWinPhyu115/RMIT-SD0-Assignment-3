@@ -132,9 +132,7 @@ jobs:
       reponame: rmit-assignment3-container-repo
     steps:
       - checkout
-      - run:
-          name: install dependicies
-
+      
       - run:
           name: Set up
           command: |
