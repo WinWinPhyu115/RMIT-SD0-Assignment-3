@@ -175,17 +175,17 @@ jobs:
             - artifacts
   
   deploy-test:
-    docker: 
-      - image: cimg/base:2020.01
-    environment:
+    docker:
+      - image: cimg/base:2021.5
+    environment: 
       ENV: test
-    steps:
+    steps: 
       - attach_workspace:
-          at: ./
+        at: ./
       - setup-cd
-      - run:
+      - run: 
           name: deploy infra
-          command: |
+          command: | 
             cd artifacts/infra
             make init
             make up
