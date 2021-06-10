@@ -124,8 +124,6 @@ jobs:
             cd src
             npm install
             npm run test-e2e
-
-
   package:
     machine: true
     environment:
@@ -174,8 +172,6 @@ jobs:
           root: ./
           paths:
             - artifacts
-
-
 
 workflows:
   version: 2
