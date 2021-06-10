@@ -176,7 +176,7 @@ jobs:
   
   deploy-test:
     docker:
-      - image: cimg/base:2021.5
+      - image: cimg/base:2020.01
     environment: 
       ENV: test
     steps: 
