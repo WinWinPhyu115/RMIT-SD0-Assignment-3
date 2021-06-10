@@ -207,11 +207,5 @@ workflows:
             - integration-test
           filters:
             branches:
-              only: master
-<<<<<<< HEAD
- 
-=======
-      - deploy-test:
-          requires:
-            - build
->>>>>>> a5c4f5eefe9aa820e052607b8aa28847e5877509
+  
+
