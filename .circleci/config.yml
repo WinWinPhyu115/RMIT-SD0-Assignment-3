@@ -182,7 +182,9 @@ jobs:
     steps: 
       - attach_workspace:
           at: ./
+
       - setup-cd
+
       - run: 
           name: deploy infra
           command: | 
@@ -198,15 +200,15 @@ workflows:
       - integration-test:
           requires: 
             - build
-      - deploy-test:
-          requires:
-            - build
       - package:
           requires:
             - integration-test
           filters:
             branches:
               only: master
+      - deploy-test:
+          requires: 
+            - build
 
   
 
