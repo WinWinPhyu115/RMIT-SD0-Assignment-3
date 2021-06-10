@@ -208,7 +208,7 @@ workflows:
               only: master
       - deploy-test:
           requires: 
-            - build
+            - package
 
   
 
