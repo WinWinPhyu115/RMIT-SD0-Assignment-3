@@ -17,4 +17,4 @@ spec:
         imagePullPolicy: Always
         name: "todo"
         ports:
-        - containerPort: 80
+        - containerPort: {{ .Values.endpoint }}

@@ -1,2 +1,3 @@
-replicaCount: 2
+replicaCount: 5
 image: 929455297842.dkr.ecr.us-east-1.amazonaws.com/rmit-assignment3-container-repo:2320ef154ef57847cb1dcb694d66f0a9f1c34403         
+endpoint: 80
