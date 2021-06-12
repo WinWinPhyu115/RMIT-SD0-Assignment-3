@@ -119,7 +119,7 @@ jobs:
           name: End 2 end tests
           no_output_timeout: 2m
           command: |
-            export ENDPOINT=http://$(kubectl get service/todo-app -o json | jq '.status.loadBalancer.ingress[0].hostname' | sed -e 's/^"//' -e 's/"$//')
+            export ENDPOINT=http://$(kubectl get service/todo -o json | jq '.status.loadBalancer.ingress[0].hostname' | sed -e 's/^"//' -e 's/"$//')
             echo $ENDPOINT
             cd src
             npm install
