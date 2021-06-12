@@ -217,6 +217,9 @@ workflows:
             - package
       - e2e:
         requires:
+          - build
+          - integration-test
+          - package
           - deploy-test
 
 
