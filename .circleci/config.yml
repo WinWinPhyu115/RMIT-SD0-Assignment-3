@@ -196,6 +196,7 @@ jobs:
           name: deploy app
           command: |
             helm upgrade todo artifacts/todo-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/image.txt),dbhost=$(cat artifacts/dbendpoint.txt)
+      - smoke-test
     
 
 workflows:
@@ -206,21 +207,16 @@ workflows:
       - integration-test:
           requires: 
             - build
-      - e2e:
-          requires:
-            - integration-test
-            - build
       - package:
           requires:
             - integration-test
-            - e2e
           filters:
             branches:
               only: master
       - deploy-test:
           requires: 
             - package
-            - e2e
+          
   
 
 
