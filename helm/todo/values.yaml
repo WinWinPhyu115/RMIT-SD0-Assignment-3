@@ -1,3 +1,3 @@
-replicaCount: 5
-image: 929455297842.dkr.ecr.us-east-1.amazonaws.com        
+replicaCount: 1
+image: 929455297842.dkr.ecr.us-east-1.amazonaws.com/rmit-assignment3-container-repo:d3b6a23210ae31f283bed00797b2a78ed9b41fe5        
 dbhost: todo-db-test-docdb-cluster.cluster-cxmdjm9b6qlt.us-east-1.docdb.amazonaws.com
