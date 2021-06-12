@@ -199,22 +199,6 @@ jobs:
       
       - smoke-test
 
-  seed-db-test:
-    docker:
-      - image: cimg/base:2020.01
-    parameters:
-      environment:
-        type: string
-        default: test
-    steps:
-      - attach_workspace:
-          at: ./
-      - setup-cd
-      - run:
-          name: update database
-          command: |
-            kubectl exec deployment/todo -n << parameters.environment >> -- ./TodoApp updatedb -s
-      
       
 
 workflows:
@@ -234,9 +218,7 @@ workflows:
       - deploy-test:
           requires: 
             - package
-      - seed-db-test:
-          requires:
-            - deploy-test
+
           
   
 
